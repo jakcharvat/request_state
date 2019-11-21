@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:request_state/request_state.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class SimpleGetPage extends StatelessWidget {
   @override
@@ -11,26 +11,21 @@ class SimpleGetPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Simple Get Request"),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.code),
-            tooltip: "Show Source",
-            onPressed: _openSource,
-          )
+          LayoutBuilder(builder: (context, constraints) {
+            return IconButton(
+              icon: Icon(Icons.code),
+              tooltip: "Show Source",
+              onPressed: () => Utils(context).openSource(
+                "https://github.com/jakcharvat/request_state/blob/master/example/lib/simple_get.dart",
+              ),
+            );
+          })
         ],
       ),
       body: Center(
         child: _Body(),
       ),
     );
-  }
-
-  void _openSource() async {
-    const url = "https://google.com";
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      print("Cannot Launch url $url");
-    }
   }
 }
 
@@ -64,10 +59,15 @@ class _BodyState extends RequestState<_Body> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListView(
               children: <Widget>[
-                FittedBox(
-                  child: Text(
-                    "Response Received",
-                    style: Theme.of(context).textTheme.display2,
+                SizedBox(height: 20.0),
+                ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 64.0),
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "Response Received",
+                      style: Theme.of(context).textTheme.display2,
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.0),

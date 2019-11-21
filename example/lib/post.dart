@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:request_state/request_state.dart';
 
@@ -12,7 +13,20 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Post Request With Body")),
+      appBar: AppBar(
+        title: Text("Post Request With Body"),
+        actions: <Widget>[
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return IconButton(
+                icon: Icon(Icons.code),
+                onPressed: () => Utils(context).openSource(
+                    "https://github.com/jakcharvat/request_state/blob/master/example/lib/post.dart"),
+              );
+            },
+          )
+        ],
+      ),
       body: Center(
         child: _Body(),
       ),

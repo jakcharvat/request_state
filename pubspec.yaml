@@ -2,8 +2,7 @@ name: request_state
 description: A new Flutter package project.
 version: 0.0.1
 author: Jakub Charvat <jakcharvat@gmail.com>
-homepage: #TODO:
-repository: #TODO:
+repository: https://github.com/jakcharvat/request_state
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -11,8 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-#  http: ^0.12.0+2
-  dio: ^3.0.4
+  dio: ^3.0.5
 
 dev_dependencies:
   flutter_test:

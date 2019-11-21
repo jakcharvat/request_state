@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:example/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:request_state/request_state.dart';
 
@@ -9,6 +10,17 @@ class GetWithOnreceivedPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Simple Get Request"),
+        actions: <Widget>[
+          LayoutBuilder(
+            builder: (context, constraints) {
+              return IconButton(
+                icon: Icon(Icons.code),
+                onPressed: () => Utils(context).openSource(
+                    "https://github.com/jakcharvat/request_state/blob/master/example/lib/get_with_onreceived.dart"),
+              );
+            },
+          )
+        ],
       ),
       body: Center(
         child: _Body(),
@@ -32,7 +44,7 @@ class _BodyState extends RequestState<_Body> {
       onPressed: () => sendRequest(
         "https://jsonplaceholder.typicode.com/todos/1",
         onReceived: (response) {
-          setState(() => _responseCount ++);
+          setState(() => _responseCount++);
         },
       ),
     );
@@ -49,7 +61,7 @@ class _BodyState extends RequestState<_Body> {
           onPressed: () => sendRequest(
             "https://jsonplaceholder.typicode.com/todos/1",
             onReceived: (response) {
-              setState(() => _responseCount ++);
+              setState(() => _responseCount++);
             },
           ),
         )
@@ -67,12 +79,17 @@ class _BodyState extends RequestState<_Body> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(
-          "Received $_responseCount ${_responseCount == 1 ? "response" : "responses"}",
-          style: Theme.of(context)
-              .textTheme
-              .display1
-              .copyWith(color: Colors.black),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: 64.0),
+          child: FittedBox(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                "Received $_responseCount ${_responseCount == 1 ? "response" : "responses"}",
+                style: Theme.of(context).textTheme.display2,
+              ),
+            ),
+          ),
         ),
         SizedBox(height: 20.0),
         activeBody,
