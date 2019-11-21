@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart' as http;
 
 abstract class RequestState<T extends StatefulWidget> extends State<T> {
-
   /// The status of the request, used to determine what body to show
   RequestStatus _requestStatus = RequestStatus.idle;
 
@@ -58,16 +57,19 @@ abstract class RequestState<T extends StatefulWidget> extends State<T> {
   void sendRequest(
     /// The URL to send the request to
     String url, {
+
     /// The type of request. As of now only `get` and `post` requests are supported
     RequestType type = RequestType.get,
+
     /// Body of the request as a JSON Map
     Map<String, dynamic> body,
+
     /// Callback to fire when requesting response succeeds
     void Function(http.Response response) onReceived,
+
     /// Callback to fire when requesting response fails
     void Function(Exception exception) onError,
   }) async {
-
     setState(() => _requestStatus = RequestStatus.waitingForResponse);
 
     Future<http.Response> responseFuture;
@@ -89,14 +91,12 @@ abstract class RequestState<T extends StatefulWidget> extends State<T> {
         latestResponse = response;
         _requestStatus = RequestStatus.receivedResponse;
       });
-
     } catch (e) {
       setState(() => _requestStatus = RequestStatus.requestFailed);
       if (onError != null) onError(e);
-      throw(e);
+      throw (e);
     }
   }
-
 }
 
 /// The type of http request to send. For now only supports get and post requests, if you
@@ -110,10 +110,13 @@ enum RequestType {
 enum RequestStatus {
   /// Before the request a been sent for the first time
   idle,
+
   /// The request has been sent but no response has been received yet
   waitingForResponse,
+
   /// A response was successfully received
   receivedResponse,
+
   /// There was some issue sending the request
   requestFailed,
 }
