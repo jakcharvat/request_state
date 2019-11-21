@@ -1,8 +1,8 @@
 name: request_state
-description: A new Flutter package project.
-version: 0.0.1
-author: Jakub Charvat <jakcharvat@gmail.com>
+description: An alternative to flutter's built-in State class made specifically to deal with async http requests.
+version: 0.0.1+1
 repository: https://github.com/jakcharvat/request_state
+homepage: https://github.com/jakcharvat/request_state/blob/master/README.md
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

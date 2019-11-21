@@ -1,4 +1,8 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1+1] - 21/11/2019
+
+- Fix missing description in `pubspec.yaml`
+
+## [0.0.1] - 21/11/2019
 
 Initial Release:
 - RequestState class
