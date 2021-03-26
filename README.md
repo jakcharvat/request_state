@@ -190,5 +190,4 @@ Widget idleBody(BuildContext context) {
 
 ### Contributing
 
-If you encounter a bug or have a suggestion, please open an issue for it on GitHub. Feel free to fork the repo
-and submit PRs on the original one. All suggestions and contributions are welcome.
+If you encounter a bug or have a suggestion, please open an issue for it on GitHub. Feel free to fork the repo and submit PRs on the original one. All suggestions and contributions are welcome.
